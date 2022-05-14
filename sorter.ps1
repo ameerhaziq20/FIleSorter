@@ -1,10 +1,10 @@
 #New-Item -ItemType Directory -Force -Path .\text
 #Move-Item -Path .\.txt -Destination .\text
 
-#$folderName = "Audio","Compressed",
+#$folderName = 
 #Disc and Media","Data and Database",
-#"Email","Executables","Font","Image","Presentation","Programming",
-#"Spreadsheet","System","Video","Text"
+#"Email","Executables",
+#"System",
 
 
 #foreach( $typeFolder in $folderName ) { 
@@ -24,6 +24,7 @@ $spreadsheetExt = ".ods",".xls",".xlsm",".xlsx"
 $presentationExt = ".key",".odp",".pps",".ppt",".pptx"
 $videoExt = ".3g2",".3gp",".avi",".flv",".h264",".m4v",".mkv",".mov",".mp4",".mpg",".mpeg",".rm","swf",".vob",".wmv"
 $fontExt = ".fnt",".fon",".otf",".ttf"
+$DiscnMediaExt = ".bin",".dmg",".iso",".toast",".vcd"
 
 
 foreach($ext in $currentExt){
@@ -131,6 +132,18 @@ foreach($ext in $currentExt){
         foreach($files in $fontExt){
             $path = ".\*$($files)"
             Move-Item -Path $path -Destination .\Font
+        }
+
+
+    }
+
+    if ($ext -in $DiscnMediaExt){
+    
+        New-Item -ItemType Directory -Force -Path .\"Disc and Media"
+
+        foreach($files in $DiscnMediaExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\"Disc and Media"
         }
 
 
