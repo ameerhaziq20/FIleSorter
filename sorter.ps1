@@ -18,6 +18,7 @@ $currentExt = get-childitem -File -Recurse| ForEach-Object {$_.Extension.tolower
 $textExt = ".txt",".doc",".docx",".odt",".pdf",".rtf",".tex",".wpd"
 $audioExt = ".aif",".cda",".mid",".mp3",".mpa",".ogg",".wav",".wma",".wpl"
 $compressedExt = ".7z",".arj",".deb",".pkg",".rar",".rpm",".tar.gz",".z",".zip"
+$imageExt = ".a1",".bmp",".gif",".ico",".jpeg",".png",".ps",".psd",".svg",".tif",".jpg",".jfif",".tiff"
 
 
 foreach($ext in $currentExt){
@@ -54,9 +55,22 @@ foreach($ext in $currentExt){
             Move-Item -Path $path -Destination .\Compressed
         }
 
+    }
+
+    
+    if ($ext -in $imageExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Image
+
+        foreach($files in $imageExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Image
+        }
+
 
     }
 }
+
 
 
 
