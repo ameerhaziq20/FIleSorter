@@ -1,20 +1,3 @@
-#New-Item -ItemType Directory -Force -Path .\text
-#Move-Item -Path .\.txt -Destination .\text
-
-#$folderName = 
-#"Data and Database",
-#"System"
-#Disc and Media","Data and Database",
-#"Email","Executables",
-#"System",
-
-
-#foreach( $typeFolder in $folderName ) { 
-#
-#    $path = ".\$($typeFolder)"
-#    New-Item -ItemType Directory -Force -Path $path
-#}
-
 $currentExt = get-childitem -File -Recurse| ForEach-Object {$_.Extension.tolower()} |Get-unique
 
 $textExt = ".txt",".doc",".docx",".odt",".pdf",".rtf",".tex",".wpd"
