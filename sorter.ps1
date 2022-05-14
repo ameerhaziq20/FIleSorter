@@ -16,13 +16,24 @@
 $currentExt = get-childitem -File -Recurse| ForEach-Object {$_.Extension.tolower()} |Get-unique
 
 $textExt = ".txt",".doc",".docx",".odt",".pdf",".rtf",".tex",".wpd"
-$audioExt = "aif","cda","mid","mp3","mpa","ogg","wav","wma","wpl"
+$audioExt = ".aif",".cda",".mid",".mp3",".mpa",".ogg",".wav",".wma",".wpl"
 $compressedExt = "7z","arj","deb","pkg","rar","rpm","tar.gz","z","zip"
 
 
 foreach($ext in $currentExt){
 
     if ($ext -in $textExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Text
+
+        foreach($files in $textExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Text
+        }
+
+    }
+
+    if ($ext -in $audioExt){
     
         New-Item -ItemType Directory -Force -Path .\Text
 
