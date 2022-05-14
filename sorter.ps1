@@ -19,6 +19,8 @@ $textExt = ".txt",".doc",".docx",".odt",".pdf",".rtf",".tex",".wpd"
 $audioExt = ".aif",".cda",".mid",".mp3",".mpa",".ogg",".wav",".wma",".wpl"
 $compressedExt = ".7z",".arj",".deb",".pkg",".rar",".rpm",".tar.gz",".z",".zip"
 $imageExt = ".a1",".bmp",".gif",".ico",".jpeg",".png",".ps",".psd",".svg",".tif",".jpg",".jfif",".tiff"
+$programmingExt = ".c",".cgi",".pl",".class",".cpp",".cs",".h",".java",".php",".py",".sh",".swift",".vb"
+$spreadsheetExt = ".ods",".xls",".xlsm",".xlsx"
 
 
 foreach($ext in $currentExt){
@@ -65,6 +67,31 @@ foreach($ext in $currentExt){
         foreach($files in $imageExt){
             $path = ".\*$($files)"
             Move-Item -Path $path -Destination .\Image
+        }
+
+
+    }
+
+    if ($ext -in $programmingExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Programming 
+
+        foreach($files in $programmingExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Programming
+        }
+
+
+    }
+
+    
+    if ($ext -in $spreadsheetExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Spreadsheet
+
+        foreach($files in $spreadsheetExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Spreadsheet
         }
 
 
