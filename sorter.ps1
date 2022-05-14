@@ -1,10 +1,9 @@
 #New-Item -ItemType Directory -Force -Path .\text
 #Move-Item -Path .\.txt -Destination .\text
 
-#$folderName = "Audio","Compressed",
-#Disc and Media","Data and Database",
-#"Email","Executables","Font","Image","Presentation","Programming",
-#"Spreadsheet","System","Video","Text"
+#$folderName = 
+#"Data and Database",
+#"System"
 
 
 #foreach( $typeFolder in $folderName ) { 
@@ -24,6 +23,8 @@ $spreadsheetExt = ".ods",".xls",".xlsm",".xlsx"
 $presentationExt = ".key",".odp",".pps",".ppt",".pptx"
 $videoExt = ".3g2",".3gp",".avi",".flv",".h264",".m4v",".mkv",".mov",".mp4",".mpg",".mpeg",".rm","swf",".vob",".wmv"
 $fontExt = ".fnt",".fon",".otf",".ttf"
+$execExt = ".apk",".bat",".bin",".cgi",".com",".exe",".gadget",'.jar',".msi",".wsf"
+$emailExt = ".email",".eml",".emlx",".msg",".oft",".ost",".pst",".vcf"
 
 
 foreach($ext in $currentExt){
@@ -135,6 +136,32 @@ foreach($ext in $currentExt){
 
 
     }
+
+    if ($ext -in $execExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Executable
+
+        foreach($files in $execExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Executable
+        }
+
+
+    }
+
+    if ($ext -in $emailExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Email
+
+        foreach($files in $emailExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Email
+        }
+
+
+    }
+
+    
 }
 
 
