@@ -2,8 +2,14 @@
 #Move-Item -Path .\.txt -Destination .\text
 
 #$folderName = 
+<<<<<<< HEAD
 #"Data and Database",
 #"System"
+=======
+#Disc and Media","Data and Database",
+#"Email","Executables",
+#"System",
+>>>>>>> v0.4
 
 
 #foreach( $typeFolder in $folderName ) { 
@@ -25,6 +31,7 @@ $videoExt = ".3g2",".3gp",".avi",".flv",".h264",".m4v",".mkv",".mov",".mp4",".mp
 $fontExt = ".fnt",".fon",".otf",".ttf"
 $execExt = ".apk",".bat",".bin",".cgi",".com",".exe",".gadget",'.jar',".msi",".wsf"
 $emailExt = ".email",".eml",".emlx",".msg",".oft",".ost",".pst",".vcf"
+$DiscnMediaExt = ".bin",".dmg",".iso",".toast",".vcd"
 
 
 foreach($ext in $currentExt){
@@ -134,7 +141,6 @@ foreach($ext in $currentExt){
             Move-Item -Path $path -Destination .\Font
         }
 
-
     }
 
     if ($ext -in $execExt){
@@ -143,7 +149,16 @@ foreach($ext in $currentExt){
 
         foreach($files in $execExt){
             $path = ".\*$($files)"
-            Move-Item -Path $path -Destination .\Executable
+            Move-Item -Path $path -Destination .\Executable}
+
+            
+    if ($ext -in $DiscnMediaExt){
+    
+        New-Item -ItemType Directory -Force -Path .\"Disc and Media"
+
+        foreach($files in $DiscnMediaExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\"Disc and Media"
         }
 
 
@@ -163,7 +178,7 @@ foreach($ext in $currentExt){
 
     
 }
-
+}
 
 
 
