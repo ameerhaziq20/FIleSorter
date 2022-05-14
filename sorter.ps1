@@ -17,7 +17,7 @@ $currentExt = get-childitem -File -Recurse| ForEach-Object {$_.Extension.tolower
 
 $textExt = ".txt",".doc",".docx",".odt",".pdf",".rtf",".tex",".wpd"
 $audioExt = ".aif",".cda",".mid",".mp3",".mpa",".ogg",".wav",".wma",".wpl"
-$compressedExt = "7z","arj","deb","pkg","rar","rpm","tar.gz","z","zip"
+$compressedExt = ".7z",".arj",".deb",".pkg",".rar",".rpm",".tar.gz",".z",".zip"
 
 
 foreach($ext in $currentExt){
@@ -35,16 +35,30 @@ foreach($ext in $currentExt){
 
     if ($ext -in $audioExt){
     
-        New-Item -ItemType Directory -Force -Path .\Text
+        New-Item -ItemType Directory -Force -Path .\Audio
 
-        foreach($files in $textExt){
+        foreach($files in $audioExt){
             $path = ".\*$($files)"
-            Move-Item -Path $path -Destination .\Text
+            Move-Item -Path $path -Destination .\Audio
+        }
+
+
+    }
+    
+    if ($ext -in $compressedExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Compressed
+
+        foreach($files in $compressedExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Compressed
         }
 
 
     }
 }
+
+
 
 
 
