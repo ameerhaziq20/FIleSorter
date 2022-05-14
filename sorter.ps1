@@ -21,6 +21,9 @@ $compressedExt = ".7z",".arj",".deb",".pkg",".rar",".rpm",".tar.gz",".z",".zip"
 $imageExt = ".a1",".bmp",".gif",".ico",".jpeg",".png",".ps",".psd",".svg",".tif",".jpg",".jfif",".tiff"
 $programmingExt = ".c",".cgi",".pl",".class",".cpp",".cs",".h",".java",".php",".py",".sh",".swift",".vb"
 $spreadsheetExt = ".ods",".xls",".xlsm",".xlsx"
+$presentationExt = ".key",".odp",".pps",".ppt",".pptx"
+$videoExt = ".3g2",".3gp",".avi",".flv",".h264",".m4v",".mkv",".mov",".mp4",".mpg",".mpeg",".rm","swf",".vob",".wmv"
+
 
 
 foreach($ext in $currentExt){
@@ -92,6 +95,30 @@ foreach($ext in $currentExt){
         foreach($files in $spreadsheetExt){
             $path = ".\*$($files)"
             Move-Item -Path $path -Destination .\Spreadsheet
+        }
+
+
+    }
+
+    if ($ext -in $presentationExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Presentation
+
+        foreach($files in $presentationExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Presentation
+        }
+
+
+    }
+
+    if ($ext -in $videoExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Video
+
+        foreach($files in $videoExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Video
         }
 
 
