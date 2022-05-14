@@ -23,7 +23,7 @@ $programmingExt = ".c",".cgi",".pl",".class",".cpp",".cs",".h",".java",".php",".
 $spreadsheetExt = ".ods",".xls",".xlsm",".xlsx"
 $presentationExt = ".key",".odp",".pps",".ppt",".pptx"
 $videoExt = ".3g2",".3gp",".avi",".flv",".h264",".m4v",".mkv",".mov",".mp4",".mpg",".mpeg",".rm","swf",".vob",".wmv"
-
+$fontExt = ".fnt",".fon",".otf",".ttf"
 
 
 foreach($ext in $currentExt){
@@ -119,6 +119,18 @@ foreach($ext in $currentExt){
         foreach($files in $videoExt){
             $path = ".\*$($files)"
             Move-Item -Path $path -Destination .\Video
+        }
+
+
+    }
+
+    if ($ext -in $fontExt){
+    
+        New-Item -ItemType Directory -Force -Path .\Font
+
+        foreach($files in $fontExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\Font
         }
 
 
