@@ -2,14 +2,11 @@
 #Move-Item -Path .\.txt -Destination .\text
 
 #$folderName = 
-<<<<<<< HEAD
 #"Data and Database",
 #"System"
-=======
 #Disc and Media","Data and Database",
 #"Email","Executables",
 #"System",
->>>>>>> v0.4
 
 
 #foreach( $typeFolder in $folderName ) { 
@@ -32,7 +29,8 @@ $fontExt = ".fnt",".fon",".otf",".ttf"
 $execExt = ".apk",".bat",".bin",".cgi",".com",".exe",".gadget",'.jar',".msi",".wsf"
 $emailExt = ".email",".eml",".emlx",".msg",".oft",".ost",".pst",".vcf"
 $DiscnMediaExt = ".bin",".dmg",".iso",".toast",".vcd"
-
+$DatanDatabaseExt = ".csv",".dat",".db",".dbf",".log",".mdb",".sav",".sql",".tar",".xml"
+$systemExt = ".bak",".cab",".cfg",".cpl",".cur",".dll",".dmp",".drv",".icns",".ini","lnk",".sys",".tmp"
 
 foreach($ext in $currentExt){
 
@@ -47,7 +45,7 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $audioExt){
+    elseif ($ext -in $audioExt){
     
         New-Item -ItemType Directory -Force -Path .\Audio
 
@@ -59,7 +57,7 @@ foreach($ext in $currentExt){
 
     }
     
-    if ($ext -in $compressedExt){
+    elseif ($ext -in $compressedExt){
     
         New-Item -ItemType Directory -Force -Path .\Compressed
 
@@ -71,7 +69,7 @@ foreach($ext in $currentExt){
     }
 
     
-    if ($ext -in $imageExt){
+    elseif ($ext -in $imageExt){
     
         New-Item -ItemType Directory -Force -Path .\Image
 
@@ -83,7 +81,7 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $programmingExt){
+    elseif ($ext -in $programmingExt){
     
         New-Item -ItemType Directory -Force -Path .\Programming 
 
@@ -96,7 +94,7 @@ foreach($ext in $currentExt){
     }
 
     
-    if ($ext -in $spreadsheetExt){
+    elseif ($ext -in $spreadsheetExt){
     
         New-Item -ItemType Directory -Force -Path .\Spreadsheet
 
@@ -108,7 +106,7 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $presentationExt){
+    elseif ($ext -in $presentationExt){
     
         New-Item -ItemType Directory -Force -Path .\Presentation
 
@@ -120,7 +118,7 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $videoExt){
+    elseif ($ext -in $videoExt){
     
         New-Item -ItemType Directory -Force -Path .\Video
 
@@ -132,7 +130,7 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $fontExt){
+    elseif ($ext -in $fontExt){
     
         New-Item -ItemType Directory -Force -Path .\Font
 
@@ -143,16 +141,16 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $execExt){
+    elseif ($ext -in $execExt){
     
         New-Item -ItemType Directory -Force -Path .\Executable
 
         foreach($files in $execExt){
             $path = ".\*$($files)"
             Move-Item -Path $path -Destination .\Executable}
-
+    }
             
-    if ($ext -in $DiscnMediaExt){
+    elseif ($ext -in $DiscnMediaExt){
     
         New-Item -ItemType Directory -Force -Path .\"Disc and Media"
 
@@ -164,7 +162,7 @@ foreach($ext in $currentExt){
 
     }
 
-    if ($ext -in $emailExt){
+    elseif ($ext -in $emailExt){
     
         New-Item -ItemType Directory -Force -Path .\Email
 
@@ -175,10 +173,32 @@ foreach($ext in $currentExt){
 
 
     }
+    elseif ($ext -in $systemExt){
+    
+        New-Item -ItemType Directory -Force -Path .\System
+
+        foreach($files in $systemExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\System
+        }
+
+
+    }
+    elseif ($ext -in $DatanDatabaseExt){
+    
+        New-Item -ItemType Directory -Force -Path .\"Data and Database"
+
+        foreach($files in $DatanDatabaseExt){
+            $path = ".\*$($files)"
+            Move-Item -Path $path -Destination .\"Data and Database"
+        }
+
+
+    }
 
     
 }
-}
+
 
 
 
