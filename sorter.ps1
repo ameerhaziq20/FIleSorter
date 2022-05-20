@@ -15,7 +15,11 @@ $DiscnMediaExt = ".bin",".dmg",".iso",".toast",".vcd"
 $DatanDatabaseExt = ".csv",".dat",".db",".dbf",".log",".mdb",".sav",".sql",".tar",".xml"
 $systemExt = ".bak",".cab",".cfg",".cpl",".cur",".dll",".dmp",".drv",".icns",".ini","lnk",".sys",".tmp"
 
+$i = 0    
+
 foreach($ext in $currentExt){
+
+
 
     if ($ext -in $textExt){
     
@@ -24,6 +28,8 @@ foreach($ext in $currentExt){
         foreach($files in $textExt){
             $path = ".\*$($files)"
             Move-Item -Path $path -Destination .\Text
+
+
         }
 
     }
@@ -178,6 +184,9 @@ foreach($ext in $currentExt){
 
 
     }
+    $i++
+    Write-Progress -activity "Scanning WMI . . ." -status "Scanned: $i of $($ext.Count)" -percentComplete (($i / $ext.Count)  * 100)
+
 
     
 }
